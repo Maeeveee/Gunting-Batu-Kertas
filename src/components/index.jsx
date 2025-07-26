@@ -1,4 +1,3 @@
-// Animasi shake CSS
 const shakeStyle = `
 @keyframes rotateRight {
   0% { transform: rotate(0deg); }
@@ -53,12 +52,10 @@ export default function Index() {
     const [showSeriusModal, setShowSeriusModal] = useState(false);
     const [showTaunt, setShowTaunt] = useState(false);
 
-    // Fungsi untuk menentukan pilihan komputer agar selalu menang jika mode serius aktif
     const getComputerChoice = (player) => {
         if (!serius || !player) {
             return choices[Math.floor(Math.random() * 3)].value;
         }
-        // Komputer memilih agar selalu menang
         if (player === "scissors") return "rock";
         if (player === "rock") return "paper";
         if (player === "paper") return "scissors";
@@ -83,7 +80,6 @@ export default function Index() {
             <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center">Gunting Batu Kertas</h1>
 
             <div className="w-full max-w-lg mb-4">
-                {/* Mobile & Desktop: horizontal, dengan pemisah */}
                 <div className="flex flex-row items-center justify-center gap-4 sm:gap-16">
                     <div className="flex flex-col items-center flex-1">
                         <span className="mb-2 font-semibold text-base sm:text-lg">Anda</span>
@@ -99,7 +95,6 @@ export default function Index() {
                             <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gray-200 rounded-full flex items-center justify-center text-gray-400">?</div>
                         )}
                     </div>
-                    {/* Pemisah vertikal */}
                     <div className="h-20 sm:h-24 w-px bg-gray-300 mx-2"></div>
                     <div className="flex flex-col items-center flex-1">
                         <span className="mb-2 font-semibold text-base sm:text-lg">{serius ? "Raja Rizal" : "Komputer"}</span>
@@ -158,7 +153,6 @@ export default function Index() {
                 .animate-pop{animation:popModal 0.3s;}
                 @keyframes popModal{0%{opacity:0;transform:scale(0.7);}80%{opacity:1;transform:scale(1.05);}100%{opacity:1;transform:scale(1);}}
             `}</style>
-            {/* Score Card Atas */}
             <div className="w-full flex justify-center mt-2 mb-4">
                 <div className="flex flex-row sm:flex-row gap-2 sm:gap-8 bg-white/90 border border-gray-200 rounded-2xl shadow-lg px-4 py-3 text-base sm:text-xl max-w-xs w-full items-center justify-center">
                     <div className="flex-1 text-center"><span className="block text-xs sm:text-sm font-semibold text-green-700">Menang</span><span className="font-bold text-green-600 text-lg sm:text-xl">{score.menang}</span></div>
@@ -195,18 +189,14 @@ export default function Index() {
                     Reset Score
                 </button>
             </div>
-            {/* Taunt Notification */}
             {showTaunt && (
                 <div className="fixed top-6 left-1/2 z-50 -translate-x-1/2 bg-rose-600 text-white px-6 py-3 rounded-xl shadow-lg text-lg font-bold animate-pop">
                     Dah dibilangin jangan lawan Sang Raja, masih ajaaa<br/>
                 </div>
             )}
-            {/* Custom Modal Popup */}
             {showSeriusModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
-                    {/* Backdrop */}
                     <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm animate-fadein" onClick={() => setShowSeriusModal(false)}></div>
-                    {/* Modal Card */}
                     <div className="relative z-10 bg-white rounded-2xl shadow-2xl p-6 w-80 max-w-xs flex flex-col items-center animate-pop">
                         <div className="text-2xl mb-2 font-bold text-rose-700">Konfirmasi</div>
                         <div className="mb-4 text-center text-gray-700">Anda serius ingin melawan <span className="font-semibold text-rose-700">Raja Rizal</span>?<br/>Beliau tidak pernah kalah!!</div>
