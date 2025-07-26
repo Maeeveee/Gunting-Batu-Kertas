@@ -158,14 +158,23 @@ export default function Index() {
                 .animate-pop{animation:popModal 0.3s;}
                 @keyframes popModal{0%{opacity:0;transform:scale(0.7);}80%{opacity:1;transform:scale(1.05);}100%{opacity:1;transform:scale(1);}}
             `}</style>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-8 mt-4 text-base sm:text-xl w-full max-w-xs mx-auto">
-                <div>Menang: <span className="font-bold text-green-600">{score.menang}</span></div>
-                <div>Draw: <span className="font-bold text-gray-600">{score.draw}</span></div>
-                <div>Kalah: <span className="font-bold text-red-600">{score.kalah}</span></div>
+            {/* Score Card Atas */}
+            <div className="w-full flex justify-center mt-2 mb-4">
+                <div className="flex flex-row sm:flex-row gap-2 sm:gap-8 bg-white/90 border border-gray-200 rounded-2xl shadow-lg px-4 py-3 text-base sm:text-xl max-w-xs w-full items-center justify-center">
+                    <div className="flex-1 text-center"><span className="block text-xs sm:text-sm font-semibold text-green-700">Menang</span><span className="font-bold text-green-600 text-lg sm:text-xl">{score.menang}</span></div>
+                    <div className="w-px h-6 bg-gray-200 hidden sm:block"></div>
+                    <div className="flex-1 text-center"><span className="block text-xs sm:text-sm font-semibold text-gray-700">Draw</span><span className="font-bold text-gray-600 text-lg sm:text-xl">{score.draw}</span></div>
+                    <div className="w-px h-6 bg-gray-200 hidden sm:block"></div>
+                    <div className="flex-1 text-center"><span className="block text-xs sm:text-sm font-semibold text-red-700">Kalah</span><span className="font-bold text-red-600 text-lg sm:text-xl">{score.kalah}</span></div>
+                </div>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row items-center justify-center sm:gap-8 mt-8 w-full max-w-xs mx-auto">
                 <button
-                    className={`w-full sm:w-auto px-4 py-2 ${serius ? "bg-red-700 hover:bg-red-800" : "bg-gray-700 hover:bg-gray-800"} text-white rounded font-semibold shadow`}
+                    className={`w-full sm:w-auto px-4 py-2 border-2 transition-all duration-200 focus:outline-none font-semibold shadow-lg rounded-xl
+                        ${serius
+                            ? "bg-gradient-to-r from-rose-700 to-red-600 border-red-700 hover:from-red-800 hover:to-rose-800 text-white"
+                            : "bg-gradient-to-r from-gray-700 to-gray-800 border-gray-700 hover:from-gray-800 hover:to-gray-900 text-white"}
+                        active:scale-95`}
                     onClick={() => {
                         if (!serius) {
                             setShowSeriusModal(true);
@@ -180,7 +189,7 @@ export default function Index() {
                     {serius ? "Menyerah Lawan Raja Rizal" : "Lawan Raja Terakhir sang Jenius dari Lahir"}
                 </button>
                 <button
-                    className="w-full sm:w-auto px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded font-semibold shadow"
+                    className="w-full sm:w-auto px-4 py-2 border-2 border-yellow-400 bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-900 font-semibold rounded-xl shadow-md hover:from-yellow-200 hover:to-yellow-300 hover:border-yellow-500 transition-all duration-200 active:scale-95 focus:outline-none"
                     onClick={() => setScore({ menang: 0, draw: 0, kalah: 0 })}
                 >
                     Reset Score
