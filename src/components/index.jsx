@@ -189,7 +189,7 @@ export default function Index() {
             {/* Taunt Notification */}
             {showTaunt && (
                 <div className="fixed top-6 left-1/2 z-50 -translate-x-1/2 bg-rose-600 text-white px-6 py-3 rounded-xl shadow-lg text-lg font-bold animate-pop">
-                    Yahaha kalah ya sama sang raja!
+                    Dah dibilangin jangan lawan Sang Raja, masih ajaaa<br/>
                 </div>
             )}
             {/* Custom Modal Popup */}
